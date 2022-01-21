@@ -4,6 +4,7 @@ import org.hibernate.EmptyInterceptor;
 import org.hibernate.type.Type;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 @SuppressWarnings("unused")
 public class MyHibernateInterceptor extends EmptyInterceptor {
@@ -20,8 +21,8 @@ public class MyHibernateInterceptor extends EmptyInterceptor {
 		System.out.println("onFlushDirty invoked on a " + entity.getClass().getSimpleName());
 
 		if (entity instanceof User) {
-			User user = (User) entity;
-			user.setVersion(user.getVersion() + 1);
+			int versionIndex = Arrays.asList(propertyNames).indexOf("version");
+			currentState[versionIndex] = (int) (currentState[versionIndex]) + 1;
 			return true;
 		}
 

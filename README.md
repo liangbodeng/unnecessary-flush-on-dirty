@@ -33,6 +33,7 @@ the parent entity.
     Hibernate: select user0_.id as id1_1_0_, user0_.version as version2_1_0_, profile1_.id as id1_0_1_, profile1_.user_id as user_id2_0_1_ from users user0_ left outer join profile profile1_ on user0_.id=profile1_.user_id where user0_.id=?
     onFlushDirty invoked on a User
     Hibernate: insert into profile (user_id, id) values (?, ?)
+    Hibernate: update users set version=? where id=?
     ========= END =========
     ```
 
